@@ -9,8 +9,7 @@ function App() {
         Rick & Morty <span className="text-primary">App</span>
       </h1>
       <div className="container">
-        <div className="row
-         ">
+        <div className="row">
 
         </div>
       </div>
