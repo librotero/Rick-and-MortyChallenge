@@ -26,11 +26,14 @@ console.log(fetchedData);
         Rick & Morty <span className="text-primary">App</span>
       </h1>
       <div className="container">
-        <div className="row"> 
-        <div className="col-3">
-          <Filters />
-        </div>
-        <div className="col-8">
+      {/*start filter */}
+      <div className="justify-content-center">
+      <Filters />
+      </div>  
+      {/*END filter */}
+
+        <div className="container"> 
+        <div className="col-12">
           <div className="row">
               <Cards results={results}/>
           </div>
