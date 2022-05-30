@@ -4,17 +4,5 @@ $background-bar: rgb(0, 224, 0);
 background-color: $background-bar;
 margin-bottom: 15px;
 border-radius: 0 0 10px 10px;
-}
-button{
-    background-color: rgba(255, 255, 255, 0);
-    color: white;
-    border: none;
-    font-size: 25px;
-    text-transform: uppercase;
-    text-shadow: yellow;
-    border-radius: 5px;
-    &:hover{
-        color: black;
 
-    }
 }

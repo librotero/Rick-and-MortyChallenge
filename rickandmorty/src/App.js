@@ -4,10 +4,31 @@ import 'bootstrap/dist/js/bootstrap';
 import Cards from './components/Cards/Cards';
 import Filters from './components/Filters/Filters';
 import Pagination from './components/Pagination/Pagination';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Location from './Pages/Location';
+import { Card } from 'reactstrap';
 
-function App() {
+function App(){
+  return(
+<Router>
+    <div className="justify-content-center">
+      <Filters/>
+      </div>  
+  <Routes>
+    <Route path="/" element={<Home />}/>
+    <Route path="/:id" element={<Card />}/>
+
+    <Route path="/location" element={<Location />}/>
+    <Route path="/location/:id" element={<Card />}/>
+
+  </Routes>
+</Router>
+  )
+}
+
+const Home=()=> {
   //Api de rick and Morty
-let [pageNumber, setPageNumber] = useState(2);
+let [pageNumber, setPageNumber] = useState(1);
 let [fetchedData, updateFetchData]= useState([]);
 let {info, results}=fetchedData;
 console.log(fetchedData);
@@ -22,20 +43,13 @@ console.log(fetchedData);
   return (
 
     <div className="App">
-      <h1 className="text-center my-16">
-        Rick & Morty <span className="text-primary">App</span>
-      </h1>
+      
+      
       <div className="container">
-      {/*start filter */}
-      <div className="justify-content-center">
-      <Filters />
-      </div>  
-      {/*END filter */}
-
         <div className="container"> 
         <div className="col-12">
           <div className="row">
-              <Cards results={results}/>
+              <Cards page="/" results={results}/>
           </div>
         </div>
         </div>

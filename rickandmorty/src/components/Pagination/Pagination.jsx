@@ -1,21 +1,57 @@
-import React from 'react'
-import ReactPaginate from 'react-paginate'
+import React, { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 
-const Pagination = ({setPageNumber}) => {
-    let next =()=> {
-        setPageNumber((x)=>x+1)
-    }
-    let previus = ()=>{
+const Pagination = ({ pageNumber, info, setPageNumber }) => {
+  let pageChange = (data) => {
+    setPageNumber(data.selected + 1);
+  };
 
-        setPageNumber((x)=>x-1)
-    }
+  const [width, setWidth] = useState(window.innerWidth);
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   return (
-    <div className={`container d-flex justify-content-center gap-5`}>
-      <button onClick={previus} className={`btn btn-primary`}>prev</button>
-      <button onClick={next} className={`btn btn-primary`}>next</button>
+    <>
+      <style jsx>
+        {`
+          @media (max-width: 768px) {
+            .pagination {
+              font-size: 12px;
+            }
+            .next,
+            .prev {
+              display: none;
+            }
+          }
+          @media (max-width: 768px) {
+            .pagination {
+              font-size: 14px;
+            }
+          }
+        `}
+      </style>
+      <ReactPaginate
+        className="pagination justify-content-center my-4 gap-4"
+        nextLabel="Next"
+        forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
+        previousLabel="Prev"
+        previousClassName="btn fs-5 prev"
+        nextClassName="btn fs-5 next"
+        activeClassName="active"
+        marginPagesDisplayed={width < 576 ? 1 : 2}
+        pageRangeDisplayed={width < 576 ? 1 : 2}
+        pageCount={info?.pages}
+        onPageChange={pageChange}
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+      />
+    </>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Pagination
+export default Pagination;
