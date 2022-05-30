@@ -20,7 +20,7 @@ function App(){
     <Route path="/" element={<Home />}/>
     <Route path="/:id" element={<Card />}/>
 
-    <Route path="/location" element={<Location />}/>
+    <Route path="/location/" element={<Location />}/>
     <Route path="/location/:id" element={<Card />}/>
 
   </Routes>
@@ -32,6 +32,7 @@ const Home=()=> {
   //Api de rick and Morty
 let [pageNumber, setPageNumber] = useState(1);
 let [fetchedData, updateFetchData]= useState([]);
+let [favorites, setFavorites]=useState([]);
 let {info, results}=fetchedData;
 console.log(fetchedData);
   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`

@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import style from './Cards.module.scss';
 
+
+
 const Cards = ({results, page}) => {
     let display;
     if(results){
@@ -34,6 +36,7 @@ const Cards = ({results, page}) => {
                     }
                 })()}   
             </div>
+            
             </Link>
                 )
         })

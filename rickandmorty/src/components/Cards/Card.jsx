@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import style from './Card.module.scss'
+import { BsFillSuitHeartFill } from "react-icons/bs";
 
 const Card = () => {
+  let [favorites, setFavorites]=useState([]);
     let [fetchedData, updateFetchData]= useState([]);
     let {id}=useParams()
     let {name, image, origin, location, status, species}= fetchedData
@@ -15,14 +17,17 @@ const Card = () => {
         updateFetchData(data)
       })()
     },[api])
-
-    
+favorites =(id)=> {
+  setFavorites.push(id)
+}
+  console.log(favorites)
   return (
-    <div className="container d-flex justify-content-center">
+    <div className="container d-flex justify-content-center ">
 <div className="">
     <h1 className="">{name}</h1>
-    <div>
+    <div className="position-relative">
         <img src={image} alt={name} />
+        <div  onClick={()=>favorites(id)} className={`${style.heart} position-absolute badge`}><BsFillSuitHeartFill /></div>
     </div>
     <h3>Location:</h3>
     <h3>Origin: </h3>
@@ -39,6 +44,7 @@ const Card = () => {
     
 
 </div>
+
     </div>
   )
 }
