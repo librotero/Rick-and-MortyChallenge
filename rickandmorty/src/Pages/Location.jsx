@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Cards from '../components/Cards/Cards'
 import Selector from '../components/Filters/Selector'
 
+
 const Location = () => {
   let [id, setId] = useState(1)
   let [info, setInfo] = useState([])
   let [results, setResults] = useState([])
-  let {name, type, dimension}=info;
+  let {type, dimension}=info;
   console.log(info)
 
   let api = `https://rickandmortyapi.com/api/location/${id}`;

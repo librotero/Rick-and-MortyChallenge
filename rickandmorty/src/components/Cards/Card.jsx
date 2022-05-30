@@ -6,6 +6,7 @@ const Card = () => {
     let [fetchedData, updateFetchData]= useState([]);
     let {id}=useParams()
     let {name, image, origin, location, status, species}= fetchedData
+    console.log(location)
     let api = `https://rickandmortyapi.com/api/character/${id}`;
     useEffect(()=>{
       (async function(){
@@ -23,18 +24,19 @@ const Card = () => {
     <div>
         <img src={image} alt={name} />
     </div>
-    <h3>Location: {location.name}</h3>
-    <h3>Origin: {origin.name}</h3>
+    <h3>Location:</h3>
+    <h3>Origin: </h3>
+    <h3>Species: {species}</h3>
     {(()=>{
                     if (status==='Dead') {
-                       return <h3 className={`${style.badgeDead} position-absolute badge`}>{status}</h3>
+                       return <h3 className={`${style.badgeDead} text-center`}>{status}</h3>
                     }else if (status==='Alive'){
-                       return  <h3 className={`${style.badgeAlive} position-absolute badge`}>{status}</h3>
+                       return  <h3 className={`${style.badgeAlive} text-center`}>{status}</h3>
                     }else{
-                       return  <h3 className={`${style.badgeUnknow} position-absolute badge`}>{status}</h3>
+                       return  <h3 className={`${style.badgeUnknow} text-center`}>{status}</h3>
                     }
                 })()} 
-    <h3>Species: {species}</h3>
+    
 
 </div>
     </div>

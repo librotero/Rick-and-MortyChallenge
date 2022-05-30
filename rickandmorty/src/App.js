@@ -7,11 +7,13 @@ import Pagination from './components/Pagination/Pagination';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Location from './Pages/Location';
 import Card from './components/Cards/Card';
+import Header from './components/Header/Header';
 
 function App(){
   return(
 <Router>
     <div className="justify-content-center">
+      <Header />
       <Filters/>
       </div>  
   <Routes>
