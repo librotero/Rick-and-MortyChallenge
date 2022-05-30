@@ -6,7 +6,7 @@ import Filters from './components/Filters/Filters';
 import Pagination from './components/Pagination/Pagination';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Location from './Pages/Location';
-import { Card } from 'reactstrap';
+import Card from './components/Cards/Card';
 
 function App(){
   return(
