@@ -28,6 +28,7 @@ const Location = () => {
           setResults(a)
       })();
   }, [api])
+  
     return (
     <div className="container">
       <div className="row">

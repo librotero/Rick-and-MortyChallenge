@@ -45,7 +45,7 @@ const Pagination = ({ pageNumber, info, setPageNumber }) => {
         activeClassName="active"
         marginPagesDisplayed={width < 576 ? 1 : 2}
         pageRangeDisplayed={width < 576 ? 1 : 2}
-        pageCount={info?.pages}
+        pageCount={42}
         onPageChange={pageChange}
         pageClassName="page-item"
         pageLinkClassName="page-link"
