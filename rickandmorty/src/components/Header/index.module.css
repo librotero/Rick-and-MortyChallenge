@@ -1,0 +1,20 @@
+.navbar{
+    background-color:  greenyellow;
+    height:100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img{
+    margin-left:40px;
+}
+.button{
+    width: 150px;
+    height: 40px;
+    background-color: blue;
+    border: none;
+    border-radius: 15px;
+    margin: 15px;
+    margin-left: 600px;
+
+}

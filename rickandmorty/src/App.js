@@ -1,67 +1,36 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
-import Cards from './components/Cards/Cards';
-import Filters from './components/Filters/Filters';
-import Pagination from './components/Pagination/Pagination';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Location from './Pages/Location';
-import Card from './components/Cards/Card';
-import Header from './components/Header/Header';
-import { ThemeProvider } from './Context/themeContext';
 
-function App(){
-  return(
-<ThemeProvider>
-<Router>
-    <div className="justify-content-center">
-      <Header />
-      <Filters/>
-      </div>  
-  <Routes>
-    <Route path="/" element={<Home />}/>
-    <Route path="/:id" element={<Card />}/>
+import { CharactersFavContextProvider } from './context/CharactersFavContext'
 
-    <Route path="/location/" element={<Location />}/>
-    <Route path="/location/:id" element={<Card />}/>
+import CharactersResults from './screens/CharactersResults'
+import CharacterDetail from './screens/CharacterDetail'
+import Layout from './components/Layout'
 
-  </Routes>
-</Router>
-</ThemeProvider>
+import GlobalStyles from './styles/GlobalStyles'
+import Fav from './screens/Fav';
+
+function App () {
+  return (
+    <BrowserRouter>
+      <CharactersFavContextProvider>
+        <Layout>
+          <GlobalStyles />
+          <Routes>
+            <Route path="/" element={<CharactersResults />} />
+            <Route path="/:id" element={<CharacterDetail />} />
+            <Route path="/fav" element={<Fav />} />
+          </Routes>
+        </Layout>
+      </CharactersFavContextProvider>
+    </BrowserRouter>
   )
 }
 
-const Home=()=> {
-  //Api de rick and Morty
-let [pageNumber, setPageNumber] = useState(1);
-let [fetchedData, updateFetchData]= useState([]);
-let {info, results}=fetchedData;
-console.log(fetchedData);
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`
-  useEffect(()=>{
-    (async function(){
-      let data = await fetch(api)
-      .then(res=> res.json())
-      updateFetchData(data)
-    })()
-  },[api])
-  return (
-
-    <div className="App">
-      
-      
-      <div className="container">
-        <div className="container"> 
-        <div className="col-12">
-          <div className="row">
-              <Cards page="/" results={results}/>
-          </div>
-        </div>
-        </div>
-      </div>
-      <Pagination setPageNumber={setPageNumber} pageNumber={pageNumber} info={info}/>
-    </div>
-  );
-}
-
-export default App;
+export default App
