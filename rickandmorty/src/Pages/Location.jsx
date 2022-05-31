@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Cards from '../components/Cards/Cards'
-import Selector from '../components/Filters/Selector'
+import Selector from '../components/Filters/Favorite'
 
 
 const Location = () => {

@@ -8,9 +8,11 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Location from './Pages/Location';
 import Card from './components/Cards/Card';
 import Header from './components/Header/Header';
+import { ThemeProvider } from './Context/themeContext';
 
 function App(){
   return(
+<ThemeProvider>
 <Router>
     <div className="justify-content-center">
       <Header />
@@ -25,6 +27,7 @@ function App(){
 
   </Routes>
 </Router>
+</ThemeProvider>
   )
 }
 
@@ -32,7 +35,6 @@ const Home=()=> {
   //Api de rick and Morty
 let [pageNumber, setPageNumber] = useState(1);
 let [fetchedData, updateFetchData]= useState([]);
-let [favorites, setFavorites]=useState([]);
 let {info, results}=fetchedData;
 console.log(fetchedData);
   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`

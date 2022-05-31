@@ -10,7 +10,7 @@ const Cards = ({results, page}) => {
         display = results.map(f=>{
             let {id, name, image, location, status} = f;
             return( 
-            <Link to={`${page}${id}`}
+            <Link to={`/${id}`}
             style={{textDecoration: "none"}}
             key={id}
             className="col-3 mb-4 position-relative"
